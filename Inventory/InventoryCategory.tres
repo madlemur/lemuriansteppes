@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryCategory" load_steps=2 format=3 uid="uid://dr5pkfdt4ihq6"]
+
+[ext_resource type="Script" uid="uid://d3ag4p8h00r0d" path="res://Inventory/InventoryCategory.gd" id="1_e66gi"]
+
+[resource]
+script = ExtResource("1_e66gi")
+category_name = ""
+category_has_subcategories = false
+subcategories = Array[ExtResource("1_e66gi")]([])
