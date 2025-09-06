@@ -1,0 +1,9 @@
+resource_path,category_name,category_texture,category_has_subcategories,parent_category,can_equip,can_consume,can_use
+res://Inventory/Resources/Categories/Axes.tres,Axes,,Yes,res://Inventory/Resources/Categories/Weapons.tres,Yes,No,No
+res://Inventory/Resources/Categories/OneHandedAxes.tres,One-Handed Axes,,No,res://Inventory/Resources/Categories/Axes.tres,Yes,No,No
+res://Inventory/Resources/Categories/OneHandedSwords.tres,One Handed Swords,,No,res://Inventory/Resources/Categories/Swords.tres,Yes,No,No
+res://Inventory/Resources/Categories/Swords.tres,Swords,,Yes,res://Inventory/Resources/Categories/Weapons.tres,Yes,No,No
+res://Inventory/Resources/Categories/ThrowingAxes.tres,Throwing Axes,,No,res://Inventory/Resources/Categories/Axes.tres,Yes,No,No
+res://Inventory/Resources/Categories/TwoHandedAxes.tres,Two-Handed Axes,,No,res://Inventory/Resources/Categories/Axes.tres,Yes,No,No
+res://Inventory/Resources/Categories/TwoHandedSwords.tres,Two Handed Swords,,No,res://Inventory/Resources/Categories/Swords.tres,Yes,No,No
+res://Inventory/Resources/Categories/Weapons.tres,Weapons,,Yes,,Yes,No,No
