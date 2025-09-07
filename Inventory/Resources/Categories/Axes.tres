@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="InventoryCategory" load_steps=3 format=3 uid="uid://cr44nbnu86sgb"]
+[gd_resource type="Resource" script_class="InventoryCategory" load_steps=4 format=3 uid="uid://cr44nbnu86sgb"]
 
+[ext_resource type="Texture2D" uid="uid://dofu3rmc6le6w" path="res://Inventory/Images/Axes.png" id="1_2hkmx"]
 [ext_resource type="Resource" uid="uid://cconxy67praj3" path="res://Inventory/Resources/Categories/Weapons.tres" id="1_3rnu3"]
-[ext_resource type="Script" uid="uid://d3ag4p8h00r0d" path="res://Inventory/InventoryCategory.gd" id="2_2hkmx"]
+[ext_resource type="Script" uid="uid://d3ag4p8h00r0d" path="res://addons/madlemur/grid_inventory/Scripts/InventoryCategory.gd" id="2_2hkmx"]
 
 [resource]
 script = ExtResource("2_2hkmx")
 category_name = "Axes"
+category_texture = ExtResource("1_2hkmx")
 category_has_subcategories = true
 parent_category = ExtResource("1_3rnu3")
 can_equip = true

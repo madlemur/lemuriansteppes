@@ -28,4 +28,4 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/madlemur/grid_inventory/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")

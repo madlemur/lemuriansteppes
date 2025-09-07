@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InventoryCategory" load_steps=3 format=3 uid="uid://l0ch51cp5n0f"]
 
 [ext_resource type="Resource" uid="uid://cr44nbnu86sgb" path="res://Inventory/Resources/Categories/Axes.tres" id="1_4o6lc"]
-[ext_resource type="Script" uid="uid://d3ag4p8h00r0d" path="res://Inventory/InventoryCategory.gd" id="1_yt6wj"]
+[ext_resource type="Script" uid="uid://d3ag4p8h00r0d" path="res://addons/madlemur/grid_inventory/Scripts/InventoryCategory.gd" id="1_yt6wj"]
 
 [resource]
 script = ExtResource("1_yt6wj")

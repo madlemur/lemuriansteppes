@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="InventoryCategory" load_steps=3 format=3 uid="uid://do3myfo4i3k0u"]
+[gd_resource type="Resource" script_class="InventoryCategory" load_steps=4 format=3 uid="uid://do3myfo4i3k0u"]
 
+[ext_resource type="Texture2D" uid="uid://bpvmtoui0drl7" path="res://Inventory/Images/Swords.png" id="1_g1gip"]
 [ext_resource type="Resource" uid="uid://cconxy67praj3" path="res://Inventory/Resources/Categories/Weapons.tres" id="1_istw5"]
-[ext_resource type="Script" uid="uid://d3ag4p8h00r0d" path="res://Inventory/InventoryCategory.gd" id="1_m6mli"]
+[ext_resource type="Script" uid="uid://d3ag4p8h00r0d" path="res://addons/madlemur/grid_inventory/Scripts/InventoryCategory.gd" id="1_m6mli"]
 
 [resource]
 script = ExtResource("1_m6mli")
 category_name = "Swords"
+category_texture = ExtResource("1_g1gip")
 category_has_subcategories = true
 parent_category = ExtResource("1_istw5")
 can_equip = true
 can_consume = false
+can_use = false
 metadata/_custom_type_script = "uid://d3ag4p8h00r0d"
