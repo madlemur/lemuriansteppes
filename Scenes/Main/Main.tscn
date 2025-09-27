@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8giy31guh0nq"]
+
+[ext_resource type="PackedScene" uid="uid://bkf7w52gfxpov" path="res://Scenes/UI/CharacterSheet.tscn" id="1_p8rbg"]
+
+[node name="Main" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterSheet" parent="UI" instance=ExtResource("1_p8rbg")]
