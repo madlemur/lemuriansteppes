@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmtdoe7dguy7w"]
+
+[ext_resource type="Texture2D" uid="uid://bck5yjtxwr50p" path="res://assets/ui_sprites.png" id="1_2y2b0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llg16"]
+atlas = ExtResource("1_2y2b0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anqbf"]
+atlas = ExtResource("1_2y2b0")
+region = Rect2(48, 0, 16, 16)
+
+[node name="UiButton" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = SubResource("AtlasTexture_llg16")
+texture_pressed = SubResource("AtlasTexture_anqbf")
