@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="GaeaGraph" load_steps=7 format=3 uid="uid://ymii1bk361gt"]
+
+[ext_resource type="Script" uid="uid://3qsmwhn2sk47" path="res://addons/gaea/resources/gaea_layer.gd" id="1_uqlq7"]
+[ext_resource type="Script" uid="uid://e45byecr4gi6" path="res://addons/gaea/resources/materials/data/tilemap_material.gd" id="1_y5kxi"]
+[ext_resource type="Script" uid="uid://dae6umbqb872e" path="res://addons/gaea/resources/gaea_graph.gd" id="2_y5kxi"]
+
+[sub_resource type="Resource" id="Resource_78vow"]
+script = ExtResource("1_y5kxi")
+type = 1
+preview_color = Color(0.47488546, 0.31867138, 0.880171, 1)
+metadata/_custom_type_script = "uid://e45byecr4gi6"
+
+[sub_resource type="Resource" id="Resource_vh4g5"]
+script = ExtResource("1_y5kxi")
+type = 1
+terrain = 1
+preview_color = Color(0.13414341, 0.6882233, 0.43059832, 1)
+metadata/_custom_type_script = "uid://e45byecr4gi6"
+
+[sub_resource type="Resource" id="Resource_hlk0d"]
+script = ExtResource("1_uqlq7")
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_y5kxi")
+layers = Array[ExtResource("1_uqlq7")]([SubResource("Resource_hlk0d")])
+logging = 15
+_connections = Array[StringName]([&"3-0-4-0", &"1-0-4-1", &"3-0-5-0", &"2-0-5-1", &"4-0-6-0", &"6-0-0-0", &"5-0-6-1"])
+_node_data = Dictionary[int, Dictionary]({
+0: {
+&"position": Vector2(1000, 260),
+&"salt": 2760214986,
+&"type": 0,
+&"uid": "uid://dol7xviglksx4"
+},
+1: {
+&"arguments": {
+&"name": "MaterialParameter"
+},
+&"position": Vector2(100, 0),
+&"salt": 1709445860,
+&"type": 0,
+&"uid": "uid://cqs1w714pbfql"
+},
+2: {
+&"arguments": {
+&"name": "MaterialParameter"
+},
+&"position": Vector2(100, 320),
+&"salt": 968920454,
+&"type": 0,
+&"uid": "uid://cqs1w714pbfql"
+},
+3: {
+&"position": Vector2(100, 500),
+&"salt": 1501997114,
+&"type": 0,
+&"uid": "uid://cgjyi804j05dy"
+},
+4: {
+&"arguments": {
+&"material": null,
+&"range": {
+"max": 1.0,
+"min": 0.0
+},
+&"reference_data": Dictionary[Vector3i, float]({})
+},
+&"position": Vector2(420, -40),
+&"salt": 1327827623,
+&"type": 0,
+&"uid": "uid://djjvx650evm0n"
+},
+5: {
+&"arguments": {
+&"material": null,
+&"range": {
+"max": 1.0,
+"min": 0.0
+},
+&"reference_data": Dictionary[Vector3i, float]({})
+},
+&"position": Vector2(420, 300),
+&"salt": 2231170256,
+&"type": 0,
+&"uid": "uid://djjvx650evm0n"
+},
+6: {
+&"position": Vector2(740, 80),
+&"salt": 215189137,
+&"type": 0,
+&"uid": "uid://d2f6bjkxcn7jl"
+}
+})
+_parameters = Dictionary[StringName, Variant]({
+&"Grass": {
+"hint": 17,
+"hint_string": "GaeaMaterial",
+"name": &"Grass",
+"type": 24,
+"usage": 4,
+"value": SubResource("Resource_78vow")
+},
+&"MaterialParameter": {
+"hint": 17,
+"hint_string": "GaeaMaterial",
+"name": "MaterialParameter",
+"type": 24,
+"usage": 4,
+"value": null
+},
+&"Sand": {
+"hint": 17,
+"hint_string": "GaeaMaterial",
+"name": &"Sand",
+"type": 24,
+"usage": 4,
+"value": SubResource("Resource_vh4g5")
+}
+})
+metadata/_custom_type_script = "uid://dae6umbqb872e"
