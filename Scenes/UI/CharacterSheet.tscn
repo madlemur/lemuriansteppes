@@ -1,21 +1,83 @@
-[gd_scene format=3 uid="uid://bkf7w52gfxpov"]
+[gd_scene load_steps=13 format=3 uid="uid://bkf7w52gfxpov"]
+
+[ext_resource type="LabelSettings" uid="uid://bde23hnhvdjf6" path="res://Resources/UILabelSettings_20pt.tres" id="1_0m3pw"]
+[ext_resource type="LabelSettings" uid="uid://bv1dhjc66n0le" path="res://Resources/UILabelSettings_14pt.tres" id="2_mdb3a"]
+[ext_resource type="Texture2D" uid="uid://clxihkopxksg2" path="res://Assets/ui_sprites.png" id="3_3aid1"]
+[ext_resource type="Texture2D" uid="uid://brd2picmvt5gy" path="res://Inventory/Images/Weapons.png" id="4_anhnf"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h6jul"]
+noise_type = 3
+frequency = 0.0415
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qn4qj"]
+width = 143
+height = 130
+noise = SubResource("FastNoiseLite_h6jul")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wk1k"]
+atlas = ExtResource("3_3aid1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Gradient" id="Gradient_0m3pw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.28502417, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mdb3a"]
+gradient = SubResource("Gradient_0m3pw")
+fill = 1
+fill_from = Vector2(0.5, 0.47008547)
+
+[sub_resource type="Gradient" id="Gradient_m5ihb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_unr4k"]
+noise_type = 3
+frequency = 0.0519
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2yfv3"]
+width = 40
+height = 40
+noise = SubResource("FastNoiseLite_unr4k")
+color_ramp = SubResource("Gradient_m5ihb")
 
 [node name="CharacterSheet" type="Control"]
+custom_minimum_size = Vector2(450, 600)
 layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -300.0
+offset_right = 225.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="CSBGColor" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.39607844, 0.4745098, 0.6039216, 1)
 
-[node name="background" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 131.0
-offset_top = 80.0
-offset_right = 711.0
-offset_bottom = 770.0
+[node name="CSBGTexture" type="TextureRect" parent="."]
+modulate = Color(0.7094758, 0.7094758, 0.7094758, 0.07450981)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_qn4qj")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="background"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,23 +85,391 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBox_Container" type="HBoxContainer" parent="background/MarginContainer"]
+[node name="Sections" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
 
-[node name="left_column" type="VBoxContainer" parent="background/MarginContainer/HBox_Container"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Character" type="Control" parent="MarginContainer/Sections"]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
-theme_override_constants/separation = 0
 
-[node name="paper_doll" type="VBoxContainer" parent="background/MarginContainer/HBox_Container"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Sections/Character"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Details" type="HBoxContainer" parent="MarginContainer/Sections/Character/MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/Sections/Character/MarginContainer/Details"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="right_column" type="VBoxContainer" parent="background/MarginContainer/HBox_Container"]
-custom_minimum_size = Vector2(50, 0)
+[node name="CharacterName" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats"]
+layout_mode = 2
+text = "Character Name"
+label_settings = ExtResource("1_0m3pw")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats"]
+layout_mode = 2
+text = "Class"
+label_settings = ExtResource("2_mdb3a")
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_2wk1k")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 151.0
+offset_bottom = 138.0
+size_flags_vertical = 3
+color = Color(0.25490198, 0.39215687, 0.54509807, 1)
+
+[node name="CSBGTexture2" type="TextureRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect"]
+modulate = Color(0.7094758, 0.7094758, 0.7094758, 0.07450981)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_qn4qj")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect"]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 344.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="DerivedStats" type="VBoxContainer" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="AttackStat" type="Control" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/AttackStat"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_anhnf")
+
+[node name="Label" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/AttackStat"]
+layout_mode = 1
+offset_left = 36.0
+offset_right = 128.0
+offset_bottom = 28.0
+text = "Attack :"
+label_settings = ExtResource("2_mdb3a")
+vertical_alignment = 1
+
+[node name="DefenseStat" type="Control" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/DefenseStat"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_anhnf")
+
+[node name="Label2" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/DefenseStat"]
+layout_mode = 1
+offset_left = 36.0
+offset_right = 130.0
+offset_bottom = 28.0
+text = "Defense :"
+label_settings = ExtResource("2_mdb3a")
+vertical_alignment = 1
+
+[node name="VitalityStat" type="Control" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/VitalityStat"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_anhnf")
+
+[node name="Label3" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/VitalityStat"]
+layout_mode = 1
+offset_left = 36.0
+offset_right = 127.0
+offset_bottom = 28.0
+text = "Vitality :"
+label_settings = ExtResource("2_mdb3a")
+vertical_alignment = 1
+
+[node name="Attributes" type="VBoxContainer" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 6
+
+[node name="PaperDollEquipment" type="Control" parent="MarginContainer/Sections/Character/MarginContainer/Details"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/PaperDollEquipment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5019608, 0.2509804, 0.38039216, 1)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Sections/Character/MarginContainer/Details/PaperDollEquipment"]
+modulate = Color(0.65, 0.65, 0.65, 0.53333336)
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_mdb3a")
+
+[node name="LevelChiron" type="Control" parent="MarginContainer/Sections/Character"]
+anchors_preset = 0
+offset_top = -48.0
+offset_right = 42.0
+offset_bottom = -6.0
+rotation = 0.7853982
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Sections/Character/LevelChiron"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.25490198, 0.39215687, 0.54509807, 1)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Sections/Character/LevelChiron"]
+modulate = Color(0.88, 0.88, 0.88, 0.23137255)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("NoiseTexture2D_2yfv3")
+
+[node name="Label" type="Label" parent="MarginContainer/Sections/Character/LevelChiron"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.289
+anchor_top = -0.289
+anchor_right = -0.289
+anchor_bottom = -0.289
+offset_left = 12.974209
+offset_top = 29.944782
+offset_right = 35.97421
+offset_bottom = 57.944782
+rotation = -0.7853982
+text = "1"
+label_settings = ExtResource("1_0m3pw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory" type="Control" parent="MarginContainer/Sections"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Sections/Inventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -67.0
+offset_right = 169.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 10
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect11" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect12" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect13" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect14" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect15" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect16" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect17" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect18" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect19" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect20" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect21" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect22" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect23" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect24" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect25" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect26" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect27" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect28" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect29" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect30" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect31" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect32" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect33" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect34" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect35" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect36" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect37" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect38" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect39" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect40" type="ColorRect" parent="MarginContainer/Sections/Inventory/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2

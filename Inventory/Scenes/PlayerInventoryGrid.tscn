@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0x18qwd8t8ro"]
-
-[ext_resource type="Script" uid="uid://hunh35h0vsit" path="res://Inventory/Scripts/PlayerInventoryGrid.gd" id="1_5cm5m"]
-
-[node name="PlayerInventoryGrid" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_5cm5m")
-metadata/_custom_type_script = "uid://bekhimf8aau0a"

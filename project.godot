@@ -28,11 +28,11 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
-GridInventoryPlugin="*res://addons/madlemur/grid_inventory/Scripts/GridInventory.gd"
+database="*res://addons/Admin/database/DatabaseManager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/madlemur/grid_inventory/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
