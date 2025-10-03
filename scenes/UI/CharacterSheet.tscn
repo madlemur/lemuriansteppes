@@ -1,9 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://bkf7w52gfxpov"]
 
-[ext_resource type="LabelSettings" uid="uid://bde23hnhvdjf6" path="res://Resources/UILabelSettings_20pt.tres" id="1_0m3pw"]
-[ext_resource type="LabelSettings" uid="uid://bv1dhjc66n0le" path="res://Resources/UILabelSettings_14pt.tres" id="2_mdb3a"]
-[ext_resource type="Texture2D" uid="uid://clxihkopxksg2" path="res://Assets/ui_sprites.png" id="3_3aid1"]
-[ext_resource type="Texture2D" uid="uid://brd2picmvt5gy" path="res://Inventory/Images/Weapons.png" id="4_anhnf"]
+[ext_resource type="LabelSettings" uid="uid://bde23hnhvdjf6" path="res://resources/UILabelSettings_20pt.tres" id="1_0m3pw"]
+[ext_resource type="LabelSettings" uid="uid://bv1dhjc66n0le" path="res://resources/UILabelSettings_14pt.tres" id="2_mdb3a"]
+[ext_resource type="Texture2D" uid="uid://clxihkopxksg2" path="res://assets/ui_sprites.png" id="3_3aid1"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h6jul"]
 noise_type = 3
@@ -17,6 +16,9 @@ noise = SubResource("FastNoiseLite_h6jul")
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wk1k"]
 atlas = ExtResource("3_3aid1")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_46xb1"]
+load_path = "res://.godot/imported/Weapons.png-3bef5d63d85139a20d5c31afbe873f4f.ctex"
 
 [sub_resource type="Gradient" id="Gradient_0m3pw"]
 interpolation_mode = 2
@@ -177,7 +179,7 @@ size_flags_vertical = 0
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
-texture = ExtResource("4_anhnf")
+texture = SubResource("CompressedTexture2D_46xb1")
 
 [node name="Label" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/AttackStat"]
 layout_mode = 1
@@ -198,7 +200,7 @@ size_flags_vertical = 0
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
-texture = ExtResource("4_anhnf")
+texture = SubResource("CompressedTexture2D_46xb1")
 
 [node name="Label2" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/DefenseStat"]
 layout_mode = 1
@@ -219,7 +221,7 @@ size_flags_vertical = 0
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
-texture = ExtResource("4_anhnf")
+texture = SubResource("CompressedTexture2D_46xb1")
 
 [node name="Label3" type="Label" parent="MarginContainer/Sections/Character/MarginContainer/Details/Stats/NinePatchRect/MarginContainer/DerivedStats/VitalityStat"]
 layout_mode = 1

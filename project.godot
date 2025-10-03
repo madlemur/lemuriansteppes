@@ -26,10 +26,6 @@ resources_spreadsheet_view/freeze_first_column=true
 config/name="Lemurian Steppes"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
-[autoload]
-
-database="*res://addons/Admin/database/DatabaseManager.gd"
-
 [editor_plugins]
 
 enabled=PackedStringArray()
