@@ -1,24 +1,22 @@
-class_name Armor extends Gear
+class_name Jewelry extends Gear
 
-@export var armor_type : ArmorType = ArmorType.CUIRIASS
-@export var armor_material : ItemMaterial = ItemMaterial.LEATHER
+@export var jewelry_type : JewelryType = JewelryType.RING
+@export var jewelry_material : ItemMaterial = ItemMaterial.WOOD
 
-enum ArmorType {
-	CUIRIASS,
-	HELM,
-	CUISSE,
-	GREAVES,
-	GAUNTLETS,
-	SHIELD,
+enum JewelryType {
+	RING,
+	AMULET,
+	BRACELET,
+	EARRING,
 }
 
 const category : Category = Category.GEAR
-const type : Type = Type.ARMOR
+const type : Type = Type.JEWEWLRY
 
 func _get_compound_category() -> String :
 	var _quality : String = Quality.keys()[quality]
 	var _rarity : String = Rarity.keys()[rarity]
-	var _material : String = ItemMaterial.keys()[armor_material]
+	var _material : String = ItemMaterial.keys()[jewelry_material]
 	
 	return "{quality}{rarity}{material}{type}".format({
 		"quality": "%s " % _quality.capitalize() if quality != Quality.AVERAGE else "",
@@ -26,5 +24,6 @@ func _get_compound_category() -> String :
 		"material": "%s " % _material.capitalize(),
 		"type": _get_type()
 	})
+
 func _get_type() -> String:
-	return ArmorType.keys()[armor_type].capitalize()
+	return JewelryType.keys()[jewelry_type].capitalize()

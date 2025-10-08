@@ -26,6 +26,10 @@ resources_spreadsheet_view/freeze_first_column=true
 config/name="Lemurian Steppes"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+DataHandler="*res://inventory/scripts/data_handler.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray()

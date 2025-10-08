@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://b6xhrxc0ivqq8"]
+
+[ext_resource type="Script" uid="uid://dp4y2teqae0u0" path="res://inventory/scripts/Item.gd" id="1_l547x"]
+[ext_resource type="Script" uid="uid://pjkdimn0p1s4" path="res://inventory/scripts/Inventory.gd" id="2_8mkje"]
+[ext_resource type="Script" uid="uid://cqfh8xr80pgfe" path="res://inventory/scripts/Weapon.gd" id="2_8vs7n"]
+
+[sub_resource type="Resource" id="Resource_6dcha"]
+script = ExtResource("2_8vs7n")
+weapon_type = 1
+name = "Timber Axe"
+weight = 15.0
+value = 25
+metadata/_custom_type_script = "uid://cqfh8xr80pgfe"
+
+[resource]
+script = ExtResource("2_8mkje")
+max_capacity = 64
+items = Array[ExtResource("1_l547x")]([SubResource("Resource_6dcha")])
+metadata/_custom_type_script = "uid://pjkdimn0p1s4"

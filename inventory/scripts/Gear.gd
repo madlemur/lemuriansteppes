@@ -28,6 +28,14 @@ enum Type {
 	STORAGE,
 }
 
+## Modifiers are defined as a range. (Should be narrow, to avoid wild variations)
+var material_durability_modifier : Dictionary[ItemMaterial, Vector2] = {}
+var quality_durability_modifier : Dictionary[Quality, Vector2] = {}
+var material_value_modifier : Dictionary[ItemMaterial, Vector2] = {}
+var rarity_value_modifier : Dictionary[Rarity, Vector2] = {}
+var quality_value_modifier : Dictionary[Quality, Vector2] = {}
+
+
 func _get_compound_category() -> String :
 	var _quality : String = Quality.keys()[quality]
 	var _rarity : String = Rarity.keys()[rarity]

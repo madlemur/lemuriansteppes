@@ -1,7 +1,7 @@
 class_name Inventory extends Resource
 
 signal item_added(item, qty, total)
-signal item_removed(item, qty, total)
+#signal item_removed(item, qty, total)
 
 @export var max_capacity : int = 1
 @export var items : Array[Item] = []
