@@ -41,6 +41,7 @@ layout_mode = 2
 
 [node name="Header" type="HBoxContainer" parent="BGColor/MarginContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="Button" type="Button" parent="BGColor/MarginContainer/VBoxContainer/Header"]
 layout_mode = 2
@@ -50,7 +51,21 @@ text = "Spawn Item"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="BGColor/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="BGColor/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+
+[node name="ItemGrid" type="GridContainer" parent="BGColor/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+
+[node name="StatusGrid" type="GridContainer" parent="BGColor/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer"]
 custom_minimum_size = Vector2(0, 420)
 layout_mode = 2
 size_flags_horizontal = 3

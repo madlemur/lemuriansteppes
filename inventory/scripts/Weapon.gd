@@ -40,3 +40,6 @@ const two_handed_types : Array[WeaponType] = [
 	WeaponType.SLING,
 	WeaponType.CROSSBOW,
 ]
+
+func _get_type() -> String:
+	return WeaponType.keys()[weapon_type].capitalize()

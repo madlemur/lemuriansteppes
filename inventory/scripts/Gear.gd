@@ -1,3 +1,4 @@
+@abstract
 class_name Gear extends Item
 
 @export var rarity : Rarity = Rarity.COMMON
@@ -45,6 +46,3 @@ func _get_compound_category() -> String :
 		"rarity": "%s " % _rarity.capitalize() if rarity != Rarity.COMMON else "",
 		"type": _get_type()
 	})
-
-func _get_type() -> String : 
-	return "Gear"

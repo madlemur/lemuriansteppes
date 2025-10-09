@@ -1,3 +1,4 @@
+@abstract
 class_name Consumable extends Item
 
 @export var type : Type = Type.FOOD
@@ -8,6 +9,3 @@ enum Type {
 	AMMUNITION,
 	REAGENT, 
 }
-
-func _get_type() -> String:
-	return Type.keys()[type]

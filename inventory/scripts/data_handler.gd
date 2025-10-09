@@ -10,7 +10,7 @@ func _ready() -> void:
 	load_data(data_path)
 	set_grid_data()
 
-
+# TODO: Integrate with the Inventory system.
 func load_data(item_data_path: String) -> void:
 	if not FileAccess.file_exists(item_data_path):
 		push_error("Data file %s not found" % item_data_path)

@@ -1,3 +1,4 @@
+@abstract
 class_name Item extends Resource
 
 enum Category {
@@ -74,9 +75,9 @@ static var RARITY_COLORS : Array[Color] = [
 var compound_category : String :
 	get:
 		return _get_compound_category()
-		
-func _get_compound_category() -> String :
-	return "Item"
-	
-func _get_type() -> String :
-	return "Item"
+
+@abstract
+func _get_compound_category() -> String
+
+@abstract
+func _get_type() -> String
