@@ -13,16 +13,20 @@ const INVENTORY_ITEM = preload("uid://duf1fjmxumhxj")
 
 @export var inventory : Inventory
 
+# inventory item slots
 var grid_array : Array[InventorySlot] = []
+# slot status filters
 var filter_array : Array[InventoryFilter] = []
+
 var item_held : InventoryItem = null
-var current_slot = null
+var current_slot: InventorySlot = null
 var can_place := false
 var icon_anchor : Vector2
 
 func _ready() -> void:
 	for i in range(36) :
 		create_slot()
+	scroll_container.mouse_exited.connect(func(): current_slot = null)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -37,22 +41,31 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("Left Mouse Click"):
 			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
 				pick_item()
-	
+
+# Yes, we're maintining two parallel sets of slots. One is the base inventory slot, including
+# whatever inventory item is placed in the slot, the other is the status filter that needs to go
+# over the base slot and placed items, but remain below the held item.
 func create_slot() -> void:
+
 	var new_slot = INVENTORY_SLOT.instantiate()
 	var new_filter = INVENTORY_FILTER.instantiate()
+
 	new_slot.slot_id = grid_array.size()
 	new_filter.slot_id = filter_array.size()
+
 	grid_array.push_back(new_slot)
 	filter_array.push_back(new_filter)
+
 	item_grid.add_child(new_slot)
 	status_grid.add_child(new_filter)
+
+	# However, we only need to track mouse enter/exit events on one of the items.
 	new_slot.slot_entered.connect(_on_slot_entered)
 	new_slot.slot_exited.connect(_on_slot_exited)
 	
 ## If dragging an Item, check the underlying slots to see if the item will fit into availble empty
 ## slot(s). If so, highlight as FREE, otherwise, highlight as TAKEN
-func _on_slot_entered(a_slot):
+func _on_slot_entered(a_slot: InventorySlot):
 	icon_anchor = Vector2(10000, 10000)
 	current_slot = a_slot
 	if item_held:
@@ -60,35 +73,35 @@ func _on_slot_entered(a_slot):
 		set_grid.call_deferred(current_slot)
 	
 ## Reset highlighting to DEFAULT
-func _on_slot_exited(_a_slot):
+func _on_slot_exited(_a_slot: InventorySlot):
 	if item_held:
 		clear_grid()
+	
 
 func _on_button_pressed() -> void:
 	var new_item = INVENTORY_ITEM.instantiate()
 	add_child(new_item)
-	new_item.load_item(randi_range(1,4))
+	new_item.load_item(randi_range(1,DataHandler.item_data.size()))
 	new_item.selected = true
 	item_held = new_item
 	item_held.modulate = 0xffffff66
 
-func check_slot_availability(a_slot) -> void:
+func _slot_id_to_grid_idx(slot_id: int, grid: Array[int]) -> int:
+	return slot_id + grid[0] + grid[1] * col_count
+	
+func _slot_id_to_grid_col(slot_id: int, grid: Array[int]) -> int:
+	return slot_id % col_count + grid[0]
+
+func check_slot_availability(a_slot: InventorySlot) -> void:
 	for grid in item_held.item_grid:
 		# grid slot you are checking
-		var grid_to_check = a_slot.slot_id + grid[0] + grid[1] * col_count
+		var grid_to_check = _slot_id_to_grid_idx(a_slot.slot_id, grid)
 		# X position of the grid slot you are checking (ignoring Y position)
-		var line_switch_check = a_slot.slot_id % col_count + grid[0]
+		var line_switch_check = _slot_id_to_grid_col(a_slot.slot_id, grid)
 		# Is the grid slot within the bounds of the row
-		if line_switch_check < 0 or line_switch_check >= col_count:
-			can_place = false
-			return
-		# is the grid slot within the bounds of the entire grid
-		if grid_to_check < 0 or grid_to_check >= grid_array.size():
-			can_place = false
-			return
-		# Is there something already in the slot
-		# TODO: Check for stackable items
-		if grid_array[grid_to_check].state == InventorySlot.State.TAKEN:
+		if line_switch_check < 0 or line_switch_check >= col_count or \
+			grid_to_check < 0 or grid_to_check >= grid_array.size() or \
+			grid_array[grid_to_check].state == InventorySlot.State.TAKEN:
 			can_place = false
 			return
 		can_place = true
@@ -96,14 +109,12 @@ func check_slot_availability(a_slot) -> void:
 func set_grid(a_slot) -> void:
 	for grid in item_held.item_grid:
 		# grid slot you are checking
-		var grid_to_check = a_slot.slot_id + grid[0] + grid[1] * col_count
+		var grid_to_check = _slot_id_to_grid_idx(a_slot.slot_id, grid)
 		# X position of the grid slot you are checking (ignoring Y position)
-		var line_switch_check = a_slot.slot_id % col_count + grid[0]
+		var line_switch_check = _slot_id_to_grid_col(a_slot.slot_id, grid)
 		# Is the grid slot within the bounds of the row
-		if line_switch_check < 0 or line_switch_check >= col_count:
-			continue
-		# is the grid slot within the bounds of the entire grid
-		if grid_to_check < 0 or grid_to_check >= grid_array.size():
+		if line_switch_check < 0 or line_switch_check >= col_count or \
+			grid_to_check < 0 or grid_to_check >= grid_array.size():
 			continue
 		if can_place:
 			filter_array[grid_to_check].set_filter(InventorySlot.State.FREE)

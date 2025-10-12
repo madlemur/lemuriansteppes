@@ -1,34 +1,72 @@
 {
   "1": {
-    "Name": "Item1",
+    "Name": "healthpotion",
     "Value": null,
     "Grid": [
-      "0,0",
-      "0,1",
-      "-1,0"
-    ]
+      "0,0"
+    ],
+    "atlas": "res://inventory/assets/Consumables.png",
+    "region": { "x": 0, "y": 0, "width": 32, "height": 32 }
   },
   "2": {
-    "Name": "Item2",
+    "Name": "huntingknife",
     "Value": null,
     "Grid": [
       "0,0",
       "0,1"
-    ]
+    ],
+    "atlas": "res://inventory/assets/Swords.png",
+    "region": { "x": 32, "y": 0, "width": 32, "height": 64 }
   },
   "3": {
-    "Name": "Item3",
-    "Value": null,
-    "Grid": [
-      "0,0",
-      "1,0"
-    ]
-  },
-  "4": {
-    "Name": "Item4",
+    "Name": "manapotion",
     "Value": null,
     "Grid": [
       "0,0"
-    ]
+    ],
+    "atlas": "res://inventory/assets/Consumables.png",
+    "region": { "x": 32, "y": 0, "width": 32, "height": 32 }
+  },
+  "4": {
+    "Name": "staminapotion",
+    "Value": null,
+    "Grid": [
+      "0,0"
+    ],
+    "atlas": "res://inventory/assets/Consumables.png",
+    "region": { "x": 64, "y": 0, "width": 32, "height": 32 }
+  },
+  "5": {
+    "Name": "longsword",
+    "Value": null,
+    "Grid": [
+      "0,0",
+      "0,-1",
+      "0,1"
+    ],
+    "atlas": "res://inventory/assets/Swords.png",
+    "region": { "x": 0, "y": 0, "width": 32, "height": 96 }
+  },
+  "6": {
+    "Name": "stilletto",
+    "Value": null,
+    "Grid": [
+      "0,0",
+      "0,1"
+    ],
+    "atlas": "res://inventory/assets/Swords.png",
+    "region": { "x": 64, "y": 0, "width": 32, "height": 64 }
+  },
+  "7": {
+    "Name": "zweihander",
+    "Value": null,
+    "Grid": [
+      "0,-2",
+      "0,-1",
+      "0,0",
+      "0,1"
+    ],
+    "atlas": "res://inventory/assets/Swords.png",
+    "region": { "x": 96, "y": 0, "width": 32, "height": 128 }
   }
 }
